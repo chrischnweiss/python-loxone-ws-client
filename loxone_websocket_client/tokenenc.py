@@ -177,3 +177,7 @@ class TokenEnc:
         _LOGGER.info('Get LoxAPP3.json')
         # Command can't be encrypted
         return 'data/LoxAPP3.json'.encode('utf8')
+
+    def enable_state_updates(self):
+        _LOGGER.info("Enable state-updates.")
+        return 'jdev/sps/enablebinstatusupdate'.encode('utf8')

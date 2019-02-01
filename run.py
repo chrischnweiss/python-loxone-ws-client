@@ -8,9 +8,10 @@ from os import environ
 from autobahn.asyncio.websocket import WebSocketClientFactory
 
 from loxone_websocket_client import ClientProtocol
+from loxone_websocket_client import LoxProtocol
 
 _LOGGER = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 MINISERVER_HOST = environ.get('MINISERVER_HOST', '127.0.0.1')
 MINISERVER_PORT = environ.get('MINISERVER_PORT', 80)
@@ -25,7 +26,8 @@ if __name__ == '__main__':
         host=MINISERVER_HOST,
         port=MINISERVER_PORT),
         protocols=['remotecontrol'])
-    ws_factory.protocol = ClientProtocol
+    #ws_factory.protocol = ClientProtocol
+    ws_factory.protocol = LoxProtocol
     ws_factory.username = MINISERVER_USERNAME
     ws_factory.password = MINISERVER_PASSWORD
 
